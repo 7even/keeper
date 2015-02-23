@@ -2,6 +2,7 @@
 ENV['LOTUS_ENV'] ||= 'test'
 
 require_relative '../config/environment'
+require 'pry'
 
 Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
 
@@ -26,7 +27,12 @@ Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
 RSpec.configure do |config|
   # Preload application for testing in isolation components
   config.before(:suite) { Lotus::Application.preload! }
-
+  
+  config.after(:each) do
+    DeploymentRepository.clear
+    ProjectRepository.clear
+  end
+  
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -99,4 +105,3 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
-
