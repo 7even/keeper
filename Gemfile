@@ -8,6 +8,8 @@ gem 'lotusrb',     '0.2.1'
 gem 'lotus-model', '~> 0.2'
 gem 'pg'
 
+gem 'slim'
+
 group :test do
   gem 'rspec'
   gem 'capybara'
