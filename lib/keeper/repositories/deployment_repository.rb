@@ -7,5 +7,11 @@ class DeploymentRepository
         deployment.project = ProjectRepository.find(deployment.project_id)
       end
     end
+    
+    def for_project(project)
+      query do
+        where(project_id: project.id)
+      end
+    end
   end
 end

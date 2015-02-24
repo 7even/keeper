@@ -5,7 +5,7 @@ module Web::Controllers::Dashboard
     expose :projects
     
     def call(params)
-      @projects = ProjectRepository.all
+      @projects = ProjectRepository.with_last_deployment
     end
   end
 end
