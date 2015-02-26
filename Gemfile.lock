@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/7even/model.git
+  revision: 80c65e4ea29ad54349b3d608347f3889b24f6b4d
+  branch: coercer_constant_resolving
+  specs:
+    lotus-model (0.2.4)
+      lotus-utils (~> 0.3, >= 0.3.2)
+      sequel (~> 4.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -17,9 +26,6 @@ GEM
       lotus-utils (~> 0.3, >= 0.3.4)
       lotus-validations (~> 0.2, >= 0.2.4)
       rack (~> 1.5)
-    lotus-model (0.2.4)
-      lotus-utils (~> 0.3, >= 0.3.2)
-      sequel (~> 4.9)
     lotus-router (0.2.1)
       http_router (~> 0.11)
       lotus-utils (~> 0.3, >= 0.3.2)
@@ -87,7 +93,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   capybara
-  lotus-model (~> 0.2)
+  lotus-model!
   lotusrb (= 0.2.1)
   pg
   pry

@@ -3,15 +3,18 @@ RSpec.describe ProjectRepository do
     let(:now) { Time.now }
     
     before(:each) do
+      staging = EnvironmentRepository.persist(Environment.new(name: 'staging'))
+      production = EnvironmentRepository.persist(Environment.new(name: 'production'))
+      
       first_project = ProjectRepository.persist(Project.new(name: 'First project'))
       
       5.times do |i|
         DeploymentRepository.persist(
           Deployment.new(
-            project_id:  first_project.id,
-            environment: 'production',
-            branch:      'master',
-            deployed_at: now + i
+            project_id:     first_project.id,
+            environment_id: production.id,
+            branch:         'master',
+            deployed_at:    now + i
           )
         )
       end
@@ -21,10 +24,10 @@ RSpec.describe ProjectRepository do
       3.times do |i|
         DeploymentRepository.persist(
           Deployment.new(
-            project_id:  second_project.id,
-            environment: 'staging',
-            branch:      'feature',
-            deployed_at: now + i
+            project_id:     second_project.id,
+            environment_id: staging.id,
+            branch:         'feature',
+            deployed_at:    now + i
           )
         )
       end

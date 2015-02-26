@@ -1,22 +1,24 @@
 RSpec.describe DeploymentRepository do
   before(:each) do
+    staging = EnvironmentRepository.persist(Environment.new(name: 'staging'))
+    
     first_project = ProjectRepository.persist(Project.new(name: 'First project'))
     
     first_deployment = Deployment.new(
-      project_id:  first_project.id,
-      environment: 'production',
-      branch:      'master',
-      deployed_at: Time.now
+      project_id:     first_project.id,
+      environment_id: staging.id,
+      branch:         'master',
+      deployed_at:    Time.now
     )
     DeploymentRepository.persist(first_deployment)
     
     second_project = ProjectRepository.persist(Project.new(name: 'Second project'))
     
     second_deployment = Deployment.new(
-      project_id:  second_project.id,
-      environment: 'staging',
-      branch:      'new_feature',
-      deployed_at: Time.now
+      project_id:     second_project.id,
+      environment_id: staging.id,
+      branch:         'new_feature',
+      deployed_at:    Time.now
     )
     DeploymentRepository.persist(second_deployment)
   end
@@ -27,7 +29,7 @@ RSpec.describe DeploymentRepository do
     it "fetches the deployment along with it's project" do
       deployment = DeploymentRepository.find(deployment_id)
       
-      expect(deployment.environment).to eq('production')
+      expect(deployment.environment.name).to eq('staging')
       expect(deployment.branch).to eq('master')
       
       expect(deployment.project.name).to eq('First project')
@@ -41,7 +43,7 @@ RSpec.describe DeploymentRepository do
       deployments = DeploymentRepository.for_project(project)
       
       expect(deployments.count).to eq(1)
-      expect(deployments.first.environment).to eq('staging')
+      expect(deployments.first.environment.name).to eq('staging')
     end
   end
 end

@@ -31,6 +31,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DeploymentRepository.clear
     ProjectRepository.clear
+    EnvironmentRepository.clear
   end
   
   # rspec-expectations config goes here. You can use an alternate
