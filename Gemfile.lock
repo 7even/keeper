@@ -1,7 +1,6 @@
 GIT
-  remote: git://github.com/7even/model.git
-  revision: 80c65e4ea29ad54349b3d608347f3889b24f6b4d
-  branch: coercer_constant_resolving
+  remote: git://github.com/lotus/model.git
+  revision: c28b20db4d32eff824328b7d9b42d47a26f3e2af
   specs:
     lotus-model (0.2.4)
       lotus-utils (~> 0.3, >= 0.3.2)
