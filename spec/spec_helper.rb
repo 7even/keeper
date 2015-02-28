@@ -25,8 +25,14 @@ Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.include Populate
+  
   # Preload application for testing in isolation components
   config.before(:suite) { Lotus::Application.preload! }
+  
+  config.before(:each) do
+    setup_test_environment
+  end
   
   config.after(:each) do
     DeploymentRepository.clear

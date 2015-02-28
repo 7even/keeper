@@ -1,38 +1,5 @@
 RSpec.describe ProjectRepository do
   describe '.with_last_deployment' do
-    let(:now) { Time.now }
-    
-    before(:each) do
-      staging = EnvironmentRepository.persist(Environment.new(name: 'staging'))
-      production = EnvironmentRepository.persist(Environment.new(name: 'production'))
-      
-      first_project = ProjectRepository.persist(Project.new(name: 'First project'))
-      
-      5.times do |i|
-        DeploymentRepository.persist(
-          Deployment.new(
-            project_id:     first_project.id,
-            environment_id: production.id,
-            branch:         'master',
-            deployed_at:    now + i
-          )
-        )
-      end
-      
-      second_project = ProjectRepository.persist(Project.new(name: 'Second project'))
-      
-      3.times do |i|
-        DeploymentRepository.persist(
-          Deployment.new(
-            project_id:     second_project.id,
-            environment_id: staging.id,
-            branch:         'feature',
-            deployed_at:    now + i
-          )
-        )
-      end
-    end
-    
     it 'fetches the projects with their last deployments' do
       projects = ProjectRepository.with_last_deployment
       
