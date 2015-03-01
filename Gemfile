@@ -11,8 +11,13 @@ gem 'pg'
 
 gem 'slim'
 
+group :development do
+  gem 'guard-rspec'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
+end
+
 group :test do
-  gem 'rspec'
   gem 'capybara'
 end
 
