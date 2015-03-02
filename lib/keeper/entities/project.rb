@@ -7,4 +7,8 @@ class Project
   def last_deployed_at
     last_deployment.deployed_at unless last_deployment.nil?
   end
+  
+  def last_deployed_from
+    last_deployment.branch unless last_deployment.nil?
+  end
 end

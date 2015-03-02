@@ -1,10 +1,14 @@
 h1 Dashboard
 
-table
-  - projects.each do |project|
-    tr
-      td = project.name
-      td
-        | @
-        = project.last_deployment.environment.name
-      td = project.last_deployed_at
+- projects.each do |project|
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title = project.name
+    
+    ul.list-group
+      - %w(staging production).each do |environment|
+        li.list-group-item
+          span.label.label-success> = project.last_deployed_from
+          | &raquo;
+          span.label.label-primary<> = environment
+          span.badge title=project.last_deployed_at.strftime('%b %e %H:%M') = ::TimeLord::Time.new(project.last_deployed_at).period.to_words

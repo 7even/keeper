@@ -10,6 +10,7 @@ gem 'lotus-model', github: 'lotus/model'
 gem 'pg'
 
 gem 'slim'
+gem 'time-lord'
 
 group :development do
   gem 'guard-rspec'
