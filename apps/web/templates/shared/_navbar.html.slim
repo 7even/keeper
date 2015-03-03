@@ -1,0 +1,18 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand href="/" Keeper
+    
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a href="/" Dashboard
+        
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+            | Projects
+            span.caret<
+          ul.dropdown-menu role="menu"
+            - projects.each do |project|
+              li
+                a href="/projects/#{project.id}" = project.name
