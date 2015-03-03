@@ -11,4 +11,5 @@ h1 Dashboard
           span.label.label-success> = deployment.branch
           | &raquo;
           span.label.label-primary<> = deployment.environment.name
-          span.badge title=deployment.deployed_at.strftime('%b %e %H:%M') = ::TimeLord::Time.new(deployment.deployed_at).period.to_words
+          span.badge title=format_time(deployment.deployed_at)
+            = time_to_words(deployment.deployed_at)
