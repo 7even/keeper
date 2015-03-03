@@ -2,10 +2,10 @@ module Web::Controllers::Dashboard
   class Index
     include Web::Action
     
-    expose :projects
+    expose :dashboard
     
     def call(params)
-      @projects = ProjectRepository.with_last_deployment
+      @dashboard = Dashboard.new
     end
   end
 end
