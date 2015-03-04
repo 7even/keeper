@@ -30,10 +30,6 @@ RSpec.configure do |config|
   # Preload application for testing in isolation components
   config.before(:suite) { Lotus::Application.preload! }
   
-  config.before(:each) do
-    setup_test_environment
-  end
-  
   config.after(:each) do
     DeploymentRepository.clear
     ProjectRepository.clear

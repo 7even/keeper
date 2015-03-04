@@ -1,5 +1,6 @@
 RSpec.describe Dashboard do
   before(:each) do
+    setup_test_environment
     ProjectRepository.create(Project.new(name: 'Empty project'))
   end
   

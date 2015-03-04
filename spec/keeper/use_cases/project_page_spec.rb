@@ -1,4 +1,8 @@
 RSpec.describe ProjectPage do
+  before(:each) do
+    setup_test_environment
+  end
+  
   subject { described_class.new(projects.first.id) }
   
   describe '#project' do
