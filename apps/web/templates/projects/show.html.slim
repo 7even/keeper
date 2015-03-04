@@ -1,0 +1,13 @@
+h2 = project_page.project.name
+
+- project_page.environments.each do |environment|
+  .panel.panel-default
+    .panel-heading
+      h3.panel-title = environment.name
+    
+    ul.list-group
+      - project_page.deployments[environment.id].each do |deployment|
+        li.list-group-item
+          span.label.label-success> = deployment.branch
+          span.badge title=format_time(deployment.deployed_at)
+            = time_to_words(deployment.deployed_at)
