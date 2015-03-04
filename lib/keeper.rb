@@ -23,3 +23,8 @@ Lotus::Model.configure do
   #
   mapping "#{__dir__}/config/mapping"
 end.load!
+
+Oj.default_options = {
+  mode: :compat,
+  symbol_keys: true
+}

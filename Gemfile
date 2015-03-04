@@ -11,6 +11,7 @@ gem 'pg'
 
 gem 'slim'
 gem 'time-lord'
+gem 'oj'
 
 group :development do
   gem 'guard-rspec'

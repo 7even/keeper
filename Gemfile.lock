@@ -75,6 +75,7 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oj (2.11.5)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -132,6 +133,7 @@ DEPENDENCIES
   guard-rspec
   lotus-model!
   lotusrb (= 0.2.1)
+  oj
   pg
   pry
   puma
