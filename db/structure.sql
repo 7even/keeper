@@ -15,3 +15,16 @@ CREATE TABLE deployments (
   branch         VARCHAR NOT NULL,
   deployed_at    TIMESTAMPTZ NOT NULL
 );
+
+CREATE VIEW deployments_report AS
+SELECT
+  p.name AS project,
+  e.name AS environment,
+  d.branch,
+  d.deployed_at
+FROM deployments AS d
+JOIN projects AS p
+  ON d.project_id = p.id
+JOIN environments AS e
+  ON d.environment_id = e.id
+ORDER BY d.deployed_at DESC;
