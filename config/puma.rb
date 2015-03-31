@@ -1,5 +1,5 @@
 require 'pathname'
-root = Pathname.new('../../../..').expand_path(__FILE__).realpath
+root = Pathname.new('../../..').expand_path(__FILE__).realpath
 
 current = root.join('current')
 shared = root.join('shared')
