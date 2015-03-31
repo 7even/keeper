@@ -10,7 +10,7 @@ set :user,      ENV['SSH_USER']
 set :deploy_to, ENV['DEPLOY_TO']
 
 set :repository, 'git://github.com/7even/keeper.git'
-set :branch,     'master'
+set :branch, ENV['BRANCH'] || 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -37,7 +37,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
     
     to :launch do
-      queue! %[cd #{deploy_to}/#{current_path} && bundle exec pumactl -F config/puma.rb restart]
+      queue! %[bundle exec pumactl -F config/puma.rb restart]
     end
   end
 end
